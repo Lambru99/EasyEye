@@ -17,20 +17,28 @@ def sound_to_start():
 
 
 def start():
-    minuti = 0
-    attesa = 0
-    while minuti != 60:
-        print("minuti: " + str(minuti))
-        time.sleep(60)
-        minuti = minuti + 1
+    concentration = input("Please enter how long you want to stay focused"
+                          "\n(This program accepts a value written in minutes) :")
+    waiting = input("Please enter how long you want to wait"
+                    "\n(This program accepts a value written in minutes):")
+    if not concentration.isdigit() & waiting.isdigit():
+        print("!ERROR! You must write only integer numbers!")
+        return
 
-    minuti = 0
-    sound_to_stop()
-    while attesa != 15:
-        print("attesa: " + str(attesa))
+    minutes = 0
+    waiting_time = 0
+    while minutes != concentration:
+        print("minute of concentration: " + str(minutes))
         time.sleep(60)
-        attesa = attesa + 1
-    attesa = 0
+        minutes = minutes + 1
+
+    minutes = 0
+    sound_to_stop()
+    while waiting_time != waiting:
+        print("minute of waiting: " + str(waiting_time))
+        time.sleep(60)
+        waiting_time = waiting_time + 1
+    waiting_time = 0
     sound_to_start()
 
 
