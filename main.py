@@ -16,15 +16,7 @@ def sound_to_start():
     myfirstbeep.hear('A')
 
 
-def start():
-    concentration = input("Please enter how long you want to stay focused"
-                          "\n(This program accepts a value written in minutes) :")
-    waiting = input("Please enter how long you want to wait"
-                    "\n(This program accepts a value written in minutes):")
-    if not concentration.isdigit() & waiting.isdigit():
-        print("!ERROR! You must write only integer numbers!")
-        return
-
+def start(concentration, waiting):
     minutes = 0
     waiting_time = 0
     while minutes != concentration:
@@ -43,8 +35,17 @@ def start():
 
 
 def loop_start():
+    global concentration, waiting
+    try:
+        concentration = (int)(input("Please enter how long you want to stay focused"
+                                    "\n(This program accepts a value written in minutes) :"))
+        waiting = (int)(input("Please enter how long you want to wait"
+                              "\n(This program accepts a value written in minutes):"))
+    except ValueError:
+        print("!ERROR! Type an integer number!")
+        loop_start()
     while 0 == 0:
-        start()
+        start(concentration, waiting)
 
 
 if __name__ == "__main__":
